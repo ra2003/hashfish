@@ -12,7 +12,7 @@ This library allows you to compare files.
 
 ### Basic usage
 
-```
+```python
 
 import hashfish
 
@@ -41,7 +41,7 @@ e766940daced1eb1bb07377d5fbb2ee0df7eb6294cbdeb5a25494c0d095cdd22ccb9977f11a49015
 
 You can also compare files:
 
-```
+```python
 >>> arcive == archive
 True
 
