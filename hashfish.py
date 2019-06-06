@@ -3,11 +3,17 @@
 
 import hashlib
 
+__all__ = ['HashFish']
+
 
 class HashFish(object):
 
-    def __init__(self, file) -> None:
+    def __init__(self, file, block_size: int = 64000) -> None:
         self.data = file.read().encode('utf-8')
+        self.block_size = block_size
+
+    def _read(self):
+        return
 
     def _hash(self, callback) -> str:
         return callback(self.data).hexdigest()
