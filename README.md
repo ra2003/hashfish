@@ -1,50 +1,50 @@
-# securefile
-
-```python
-# -*- coding: utf-8 -*-
+# hashfish
 
 
-import hashlib
+This library allows you to compare files.
+
+### Installation
+
+```
+~ pipenv install hashfish
+```
 
 
-class ComparableFile(object):
+### Basic usage
 
-    def __init__(self, file) -> None:
-        self.data = file.read().encode('utf-8')
+```
 
-    def _hash(self, callback) -> str:
-        return callback(self.data).hexdigest()
+import hashfish
 
-    @property
-    def md5(self) -> str:
-        return self._hash(hashlib.md5)
 
-    @property
-    def sha1(self) -> str:
-        return self._hash(hashlib.sha1)
+with open('file.zip') as f:
+    file = hashfish.HashFish(f)
 
-    @property
-    def sha224(self) -> str:
-        return self._hash(hashlib.sha224)
+>>> archive.md5
+db79bedb48340fe39d025a81080f40c4
 
-    @property
-    def sha256(self) -> str:
-        return self._hash(hashlib.sha256)
+>>> archive.sha1
+aa00572321e92840e11daf9cdcad1725c53ed15c
 
-    @property
-    def sha384(self) -> str:
-        return self._hash(hashlib.sha384)
+>>> archive.sha224
+69e660ff245a33be40a215bc4aaf6027df056875c925d8f7bcc5ff00
 
-    @property
-    def sha512(self) -> str:
-        return self._hash(hashlib.sha512)
+>>> archive.sha256
+13feaac02381e66ec367c9b1ab61576fccd637807cba1c56c16ef6a7c1344053
 
-    def __eq__(self, other) -> bool:
-        if not isinstance(other, ComparableFile):
-            raise TypeError('Other must be instance of <FileHash> object')
-        return self.sha1 == other.sha1
+>>> archive.sha384
+405e6d56cea9b189488b0b3a647a2503d79fafad3fd7c1db0bcbe50f03aa77a799f8c29efc098212a964b537e83b3867
 
-    def __str__(self):
-        return '{}'.format(self.sha1)
+>>> archive.sha512
+e766940daced1eb1bb07377d5fbb2ee0df7eb6294cbdeb5a25494c0d095cdd22ccb9977f11a4901549d8ed847ef10bb225f68e03214357a458c565500b17a671
+```
 
+You can also compare files:
+
+```
+>>> arcive == archive
+True
+
+>>> arcive != archive
+False
 ```
