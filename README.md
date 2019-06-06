@@ -18,7 +18,7 @@ import hashfish
 
 
 with open('file.zip') as f:
-    archive = hashfish.HashFish(f)
+    archive = hashfish.HashFish(f, block_size=64000)
 
 >>> archive.md5
 'db79bedb48340fe39d025a81080f40c4'
