@@ -1,6 +1,12 @@
+import unittest
+
 import hashfish
 
-with open('archive.txt') as f:
-    archive = hashfish.HashFish(f)
 
-    print(archive == archive)
+class TestHashFish(unittest.TestCase):
+
+    def tearDown(self):
+        pass
+
+    def setUp(self):
+        pass
