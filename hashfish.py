@@ -9,14 +9,14 @@ __all__ = ['HashFish']
 class HashFish(object):
 
     def __init__(self, file, block_size: int = 64000) -> None:
-        self.data = file.read().encode('utf-8')
+        self.data = file
         self.block_size = block_size
 
     def _read(self):
-        return
+        return self._read().encode('utf-8')
 
     def _hash(self, callback) -> str:
-        return callback(self.data).hexdigest()
+        return callback(self._read()).hexdigest()
 
     @property
     def md5(self) -> str:
